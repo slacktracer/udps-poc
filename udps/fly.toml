@@ -1,0 +1,36 @@
+# fly.toml app configuration file generated for udps-restless-sunset-50 on 2024-03-14T20:28:35-03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'udps-restless-sunset-50'
+primary_region = 'gig'
+
+[build]
+
+[http_service]
+  internal_port = 9208
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[services]]
+  protocol = 'udp'
+  internal_port = 9208
+
+[[services.ports]]
+    port = 9208
+
+[[services]]
+  protocol = 'tcp'
+  internal_port = 9208
+
+[[services.ports]]
+    port = 9208
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
